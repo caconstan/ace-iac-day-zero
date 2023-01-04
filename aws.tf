@@ -42,6 +42,9 @@ module "security_group_1" {
   providers = {
     aws = aws.ohio
   }
+  lifecycle {
+      create_before_destroy = true
+  }
 }
 
 module "aws_spoke_bastion" {
