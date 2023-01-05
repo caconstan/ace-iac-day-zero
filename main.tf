@@ -65,6 +65,8 @@ module "azure_spoke_2" {
   transit_gw      = module.aws_transit_1.transit_gateway.gw_name
 }
 
+/*
+
 # Multi-Cloud Segmentation
 resource "aviatrix_segmentation_network_domain" "BU1" {
   domain_name = "BU1"
@@ -79,7 +81,6 @@ resource "aviatrix_segmentation_network_domain" "BU2" {
   ]
 }
 
-/*
 resource "aviatrix_segmentation_network_domain_connection_policy" "BU1_BU2" {
   domain_name_1 = "BU1"
   domain_name_2 = "BU2"
