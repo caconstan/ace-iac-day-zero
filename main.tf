@@ -1,5 +1,13 @@
 // ACE-IAC Core Aviatrix Infrastructure
 
+# Multi-Cloud Segmentation
+resource "aviatrix_segmentation_network_domain" "BU1" {
+  domain_name = "BU1"
+}
+resource "aviatrix_segmentation_network_domain" "BU2" {
+  domain_name = "BU2"
+}
+
 # Private Key creation
 resource "tls_private_key" "avtx_key" {
   algorithm = "RSA"
@@ -65,21 +73,12 @@ module "azure_spoke_2" {
   transit_gw      = module.aws_transit_1.transit_gateway.gw_name
 }
 
-
-
-# Multi-Cloud Segmentation
-resource "aviatrix_segmentation_network_domain" "BU1" {
-  domain_name = "BU1"
-  depends_on = [
+/*
+      depends_on = [
     module.aws_transit_1
   ]
-}
-resource "aviatrix_segmentation_network_domain" "BU2" {
-  domain_name = "BU2"
-  depends_on = [
-    module.aws_transit_1
-  ]
-}
+
+*/
 
 resource "aviatrix_segmentation_network_domain_connection_policy" "BU1_BU2" {
   domain_name_1 = "BU1"
